@@ -33,7 +33,7 @@ def main():
         title=title,
         description=description,
         article=article,
-        examples=[["./data/input/test.jpg"], ["./data/input/test2.jpg"]],
+        examples=[["./test.jpg"], ["./test2.jpg"]],
     ).launch(debug=True)
 
 
