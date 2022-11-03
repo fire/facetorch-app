@@ -8,12 +8,13 @@ cfg = OmegaConf.load("config.merged.yml")
 analyzer = FaceAnalyzer(cfg.analyzer)
 
 
-def inference(image):
-    analyzer.logger.info(image.shape)
-    analyzer.logger.info(image.mean())
-    analyzer.logger.info(image.std())
+def inference(path_image):
+    analyzer.logger.info(path_image)
+    # analyzer.logger.info(image.shape)
+    # analyzer.logger.info(image.mean())
+    # analyzer.logger.info(image.std())
     response = analyzer.run(
-        path_image=image,
+        path_image=path_image,
         batch_size=cfg.batch_size,
         fix_img_size=cfg.fix_img_size,
         return_img_data=cfg.return_img_data,
@@ -30,7 +31,7 @@ article = "<p style='text-align: center'><a href='https://github.com/tomas-gajar
 
 demo=gr.Interface(
     inference,
-    [gr.inputs.Image(label="Input")],
+    [gr.inputs.Image(label="Input", type=str)],
     gr.outputs.Image(type="pil", label="Output"),
     title=title,
     description=description,
