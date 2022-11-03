@@ -9,10 +9,6 @@ analyzer = FaceAnalyzer(cfg.analyzer)
 
 
 def inference(path_image):
-    analyzer.logger.info(path_image)
-    # analyzer.logger.info(image.shape)
-    # analyzer.logger.info(image.mean())
-    # analyzer.logger.info(image.std())
     response = analyzer.run(
         path_image=path_image,
         batch_size=cfg.batch_size,
@@ -31,7 +27,7 @@ article = "<p style='text-align: center'><a href='https://github.com/tomas-gajar
 
 demo=gr.Interface(
     inference,
-    [gr.inputs.Image(label="Input", type=str)],
+    [gr.inputs.Image(label="Input", type="filepath")],
     gr.outputs.Image(type="pil", label="Output"),
     title=title,
     description=description,
