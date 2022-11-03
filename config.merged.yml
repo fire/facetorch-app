@@ -338,13 +338,6 @@ analyzer:
       line_width: 0.8
       color: g
       markeredgecolor: green
-    save:
-      _target_: facetorch.analyzer.utilizer.save.ImageSaver
-      transform: None
-      device:
-        _target_: torch.device
-        type: ${analyzer.device}
-      optimize_transform: false
   logger:
     _target_: facetorch.logger.LoggerJsonFile
     name: facetorch
@@ -354,10 +347,9 @@ analyzer:
 main:
   sleep: 3
 debug: true
-path_image: /opt/facetorch/data/input/test.jpg
 batch_size: 8
 fix_img_size: true
-return_img_data: false
-include_tensors: false
+return_img_data: true
+include_tensors: true
 path_output: /opt/facetorch/data/output/test.png
 path_image_2: /opt/facetorch/data/input/test3.jpg
