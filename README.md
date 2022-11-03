@@ -3,9 +3,8 @@ title: facetorch-app
 emoji: 🧑‍🦲
 colorFrom: red
 colorTo: black
-sdk: gradio
-sdk_version: 3.8.2
-app_file: app.py
+sdk: docker
+app_port: 7860
 pinned: false
 license: apache-2.0
 ---
