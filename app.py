@@ -1,3 +1,4 @@
+import json
 import gradio as gr
 import torchvision
 from facetorch import FaceAnalyzer
@@ -17,9 +18,14 @@ def inference(path_image):
         include_tensors=cfg.include_tensors,
         path_output=None,
     )
+    
     pil_image = torchvision.transforms.functional.to_pil_image(response.img)
     
-    out_tuple = (pil_image, str(response))
+    fer_dict_str = str({face.indx: face.preds["fer"].label for face in response.faces})
+    deepfake_dict_str = str({face.indx: face.preds["deepfake"].label for face in response.faces})
+    response_str = str(response)
+    
+    out_tuple = (pil_image, fer_dict_str, deepfake_dict_str, response_str)
     return out_tuple
 
 
@@ -30,7 +36,10 @@ article = "<p style='text-align: center'><a href='https://github.com/tomas-gajar
 demo=gr.Interface(
     inference,
     [gr.inputs.Image(label="Input", type="filepath")],
-    [gr.outputs.Image(type="pil", label="Output"), gr.outputs.Textbox(label="Response")],
+    [gr.outputs.Image(type="pil", label="Output"),
+     gr.outputs.Textbox(label="Facial Expression Recognition"),
+     gr.outputs.Textbox(label="DeepFake Detection"),
+     gr.outputs.Textbox(label="Response")],
     title=title,
     description=description,
     article=article,
