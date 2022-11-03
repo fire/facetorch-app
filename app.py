@@ -9,9 +9,9 @@ analyzer = FaceAnalyzer(cfg.analyzer)
 
 
 def inference(image):
-    print(image.shape)
-    print(image.mean())
-    print(image.std())
+    analyzer.logger.info(image.shape)
+    analyzer.logger.info(image.mean())
+    analyzer.logger.info(image.std())
     response = analyzer.run(
         path_image=image,
         batch_size=cfg.batch_size,
