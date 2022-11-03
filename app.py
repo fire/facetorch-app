@@ -1,7 +1,7 @@
 import gradio as gr
 import torchvision
 from facetorch import FaceAnalyzer
-from OmegaConf import OmegaConf
+from omegaconf import OmegaConf
 
 
 cfg = OmegaConf.load("config.merged.yaml")
