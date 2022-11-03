@@ -2,14 +2,13 @@ FROM python:3.9.12-slim
 
 WORKDIR /code
 
-COPY ./requirements.txt $WORKDIR/requirements.txt
-COPY ./config.merged.yml $WORKDIR/config.merged.yml
+COPY requirements.txt $WORKDIR/requirements.txt
 
 RUN pip install gradio --no-cache-dir
 RUN pip install --no-cache-dir --upgrade -r $WORKDIR/requirements.txt
 
-COPY ./main.py $WORKDIR/main.py
+COPY . .
 
 EXPOSE 7860
 
-CMD ["python", "app.py"]
+ENTRYPOINT ["python", "app.py"]
