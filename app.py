@@ -34,4 +34,4 @@ demo=gr.Interface(
     article=article,
     examples=[["./test.jpg"], ["./test2.jpg"], ["./test3.jpg"], ["./test4.jpg"]],
 )
-demo.launch(debug=True)
+demo.launch(server_name="0.0.0.0", server_port=7860, debug=True)
