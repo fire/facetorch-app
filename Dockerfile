@@ -2,7 +2,8 @@ FROM python:3.9.12-slim
 
 RUN useradd -ms /bin/bash admin
 
-WORKDIR /code
+ENV WORKDIR=/code
+WORKDIR $WORKDIR
 RUN chown -R admin:admin $WORKDIR
 RUN chmod 755 $WORKDIR
 
