@@ -4,7 +4,7 @@ from facetorch import FaceAnalyzer
 from omegaconf import OmegaConf
 
 
-cfg = OmegaConf.load("config.merged.yaml")
+cfg = OmegaConf.load("config.merged.yml")
 analyzer = FaceAnalyzer(cfg.analyzer)
 
 
@@ -33,7 +33,7 @@ def main():
         title=title,
         description=description,
         article=article,
-        examples=[["./test.jpg"], ["./test2.jpg"]],
+        examples=[["./test.jpg"], ["./test2.jpg"], ["./test3.jpg"], ["./test4.jpg"]],
     ).launch(debug=True)
 
 
