@@ -19,7 +19,7 @@ analyzer:
     downloader:
       _target_: facetorch.downloader.DownloaderGDrive
       file_id: 154x2VjmTQVqmowB0yZw4Uck7uQs2vVBs
-      path_local: /opt/facetorch/models/torchscript/detector/1/model.pt
+      path_local: /code/facetorch/models/torchscript/detector/1/model.pt
     device:
       _target_: torch.device
       type: ${analyzer.device}
@@ -102,7 +102,7 @@ analyzer:
       downloader:
         _target_: facetorch.downloader.DownloaderGDrive
         file_id: 19h3kqar1wlELAmM5hDyj9tlrUh8yjrCl
-        path_local: /opt/facetorch/models/torchscript/predictor/embed/1/model.pt
+        path_local: /code/facetorch/models/torchscript/predictor/embed/1/model.pt
       device:
         _target_: torch.device
         type: ${analyzer.device}
@@ -143,7 +143,7 @@ analyzer:
       downloader:
         _target_: facetorch.downloader.DownloaderGDrive
         file_id: 1H-aPtFd9C5D7y1vzoWsObKAxeIBE9QPd
-        path_local: /opt/facetorch/models/torchscript/predictor/verify/1/model.pt
+        path_local: /code/facetorch/models/torchscript/predictor/verify/1/model.pt
       device:
         _target_: torch.device
         type: ${analyzer.device}
@@ -184,7 +184,7 @@ analyzer:
       downloader:
         _target_: facetorch.downloader.DownloaderGDrive
         file_id: 1xoB5VYOd0XLjb-rQqqHWCkQvma4NytEd
-        path_local: /opt/facetorch/models/torchscript/predictor/fer/2/model.pt
+        path_local: /code/facetorch/models/torchscript/predictor/fer/2/model.pt
       device:
         _target_: torch.device
         type: ${analyzer.device}
@@ -233,7 +233,7 @@ analyzer:
       downloader:
         _target_: facetorch.downloader.DownloaderGDrive
         file_id: 1GjDTwQpvrkCjXOdiBy1oMkzm7nt-bXFg
-        path_local: /opt/facetorch/models/torchscript/predictor/deepfake/1/model.pt
+        path_local: /code/facetorch/models/torchscript/predictor/deepfake/1/model.pt
       device:
         _target_: torch.device
         type: ${analyzer.device}
@@ -276,7 +276,7 @@ analyzer:
       downloader:
         _target_: facetorch.downloader.DownloaderGDrive
         file_id: 16gNFQdEH2nWvW3zTbdIAniKIbPAp6qBA
-        path_local: /opt/facetorch/models/torchscript/predictor/align/1/model.pt
+        path_local: /code/facetorch/models/torchscript/predictor/align/1/model.pt
       device:
         _target_: torch.device
         type: ${analyzer.device}
@@ -314,7 +314,7 @@ analyzer:
       downloader_meta:
         _target_: facetorch.downloader.DownloaderGDrive
         file_id: 11tdAcFuSXqCCf58g52WT1Rpa8KuQwe2o
-        path_local: /opt/facetorch/data/3dmm/meta.pt
+        path_local: /code/facetorch/data/3dmm/meta.pt
       image_size: 120
     draw_boxes:
       _target_: facetorch.analyzer.utilizer.draw.BoxDrawer
@@ -342,7 +342,7 @@ analyzer:
     _target_: facetorch.logger.LoggerJsonFile
     name: facetorch
     level: 20
-    path_file: /opt/logs/facetorch/main.log
+    path_file: /code/logs/facetorch/main.log
     json_format: '%(asctime)s %(levelname)s %(message)s'
 main:
   sleep: 3
@@ -351,5 +351,3 @@ batch_size: 8
 fix_img_size: true
 return_img_data: true
 include_tensors: true
-path_output: /opt/facetorch/data/output/test.png
-path_image_2: /opt/facetorch/data/input/test3.jpg
