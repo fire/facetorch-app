@@ -8,9 +8,12 @@ cfg = OmegaConf.load("config.merged.yml")
 analyzer = FaceAnalyzer(cfg.analyzer)
 
 
-def inference(path_image):
+def inference(image):
+    print(image.shape)
+    print(image.mean())
+    print(image.std())
     response = analyzer.run(
-        path_image=path_image,
+        path_image=image,
         batch_size=cfg.batch_size,
         fix_img_size=cfg.fix_img_size,
         return_img_data=cfg.return_img_data,
