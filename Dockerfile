@@ -8,7 +8,7 @@ COPY ./config.merged.yml $WORKDIR/config.merged.yml
 RUN pip install gradio --no-cache-dir
 RUN pip install --no-cache-dir --upgrade -r $WORKDIR/requirements.txt
 
-COPY ./app.py $WORKDIR/app.py
+COPY ./main.py $WORKDIR/main.py
 
 EXPOSE 7860
 
