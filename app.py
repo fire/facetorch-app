@@ -15,7 +15,7 @@ def inference(path_image):
         fix_img_size=cfg.fix_img_size,
         return_img_data=cfg.return_img_data,
         include_tensors=cfg.include_tensors,
-        path_output=cfg.path_output,
+        path_output=None,
     )
     pil_image = torchvision.transforms.functional.to_pil_image(response.img)
     return pil_image
