@@ -30,7 +30,7 @@ article = "<p style='text-align: center'><a href='https://github.com/tomas-gajar
 demo=gr.Interface(
     inference,
     [gr.inputs.Image(label="Input", type="filepath")],
-    [gr.outputs.Image(type="pil", label="Output"), gr.outputs.Textbox(label="Response", max_lines=200)],
+    [gr.outputs.Image(type="pil", label="Output"), gr.outputs.Textbox(label="Response")],
     title=title,
     description=description,
     article=article,
