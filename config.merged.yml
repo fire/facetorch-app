@@ -73,7 +73,7 @@ analyzer:
       - 0.1
       - 0.2
       reverse_colors: ${analyzer.detector.reverse_colors}
-      expand_pixels: 4
+      expand_pixels: 10
   unifier:
     _target_: facetorch.analyzer.unifier.FaceUnifier
     transform:
