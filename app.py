@@ -21,21 +21,17 @@ def inference(path_image):
     return pil_image
 
 
-def main():
-    title = "facetorch"
-    description = "Demo for facetorch, a Python library that can detect faces and analyze facial features using deep neural networks. The goal is to gather open sourced face analysis models from the community and optimize them for performance using TorchScrip. Try selecting one of the example images or upload your own."
-    article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' target='_blank'>Github Repo</a></p>"
+title = "facetorch"
+description = "Demo for facetorch, a Python library that can detect faces and analyze facial features using deep neural networks. The goal is to gather open sourced face analysis models from the community and optimize them for performance using TorchScrip. Try selecting one of the example images or upload your own."
+article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' target='_blank'>Github Repo</a></p>"
 
-    gr.Interface(
-        inference,
-        [gr.inputs.Image(label="Input")],
-        gr.outputs.Image(type="pil", label="Output"),
-        title=title,
-        description=description,
-        article=article,
-        examples=[["./test.jpg"], ["./test2.jpg"], ["./test3.jpg"], ["./test4.jpg"]],
-    ).launch(debug=True)
-
-
-if __name__ == "__main__":
-    main()
+demo=gr.Interface(
+    inference,
+    [gr.inputs.Image(label="Input")],
+    gr.outputs.Image(type="pil", label="Output"),
+    title=title,
+    description=description,
+    article=article,
+    examples=[["./test.jpg"], ["./test2.jpg"], ["./test3.jpg"], ["./test4.jpg"]],
+)
+demo.launch(debug=True)
