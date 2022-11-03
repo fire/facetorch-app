@@ -18,7 +18,9 @@ def inference(path_image):
         path_output=None,
     )
     pil_image = torchvision.transforms.functional.to_pil_image(response.img)
-    return pil_image
+    
+    out_tuple = (pil_image, str(response))
+    return out_tuple
 
 
 title = "facetorch"
@@ -28,7 +30,7 @@ article = "<p style='text-align: center'><a href='https://github.com/tomas-gajar
 demo=gr.Interface(
     inference,
     [gr.inputs.Image(label="Input", type="filepath")],
-    gr.outputs.Image(type="pil", label="Output"),
+    [gr.outputs.Image(type="pil", label="Output"), gr.outputs.Textbox(label="Response", max_lines=200)],
     title=title,
     description=description,
     article=article,
