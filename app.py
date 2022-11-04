@@ -45,7 +45,7 @@ def inference(path_image: str) -> Tuple:
 
 title = "facetorch-app"
 description = "Demo of facetorch, a Python library that uses pre-trained deep neural networks for face detection, representation learning, verification, expression recognition, deepfake detection, and 3D alignment. Try selecting one of the example images or upload your own. This work would not be possible without the original work of the researchers and engineers who trained the models (sources and credits can be found in the facetorch repository). Use responsibly."
-article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' style='text-align:center' target='_blank'>facetorch GitHub repository</a><a href='https://pypi.org/project/facetorch/'><img src='https://img.shields.io/pypi/v/facetorch' style='text-align:center' alt='PyPI'></a><a href='https://anaconda.org/conda-forge/facetorch' style='text-align:center'><img src='https://img.shields.io/conda/vn/conda-forge/facetorch' alt='Conda (channel only)'></a><a href='https://raw.githubusercontent.com/tomas-gajarsky/facetorch/main/LICENSE' style='text-align:center'><img src='https://img.shields.io/pypi/l/facetorch' alt='PyPI - License' class='center'></a><img src='https://raw.githubusercontent.com/tomas-gajarsky/facetorch/main/data/facetorch-logo-64.png' alt='' class='center' title='facetorch logo'></p>"
+article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' style='text-align:center' target='_blank'>facetorch GitHub repository</a></p>"
 
 demo=gr.Interface(
     inference,
@@ -59,6 +59,6 @@ demo=gr.Interface(
     title=title,
     description=description,
     article=article,
-    examples=[["./test5.jpg"], ["./test.jpg"], ["./test4.jpg"], ["./test2.jpg"], ["./test8.jpg"], ["./test6.jpg"], ["./test3.jpg"]],
+    examples=[["./test5.jpg"], ["./test.jpg"], ["./test4.jpg"], ["./test2.jpg"], ["./test8.jpg"], ["./test6.jpg"], ["./test3.jpg"], ["./test10.jpg"]],
 )
 demo.launch(server_name="0.0.0.0", server_port=7860, debug=True)
