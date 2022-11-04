@@ -43,18 +43,18 @@ def inference(path_image: str) -> Tuple:
     return out_tuple
 
 
-title = "facetorch"
-description = "Demo of facetorch, a Python library that can detect faces and analyze facial features using deep neural networks. The goal is to gather open-sourced face analysis models from the community and optimize them for performance using TorchScript. Try selecting one of the example images or upload your own."
-article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' target='_blank'>facetorch GitHub repository</a></p>"
+title = "facetorch-app"
+description = "Demo of facetorch, a Python library that uses pre-trained deep neural networks for face detection, representation learning, verification, expression recognition, deepfake detection, and 3D alignment. Try selecting one of the example images or upload your own. The quality of different models varies. Use responsibly."
+article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' target='_blank'>facetorch GitHub repository</a></p><a href='https://pypi.org/project/facetorch/'><img src='https://img.shields.io/pypi/v/facetorch' alt='PyPI'></a><a href='https://anaconda.org/conda-forge/facetorch'><img src='https://img.shields.io/conda/vn/conda-forge/facetorch' alt='Conda (channel only)'></a><a href='https://raw.githubusercontent.com/tomas-gajarsky/facetorch/main/LICENSE'><img src='https://img.shields.io/pypi/l/facetorch' alt='PyPI - License'></a><p><img src='https://raw.githubusercontent.com/tomas-gajarsky/facetorch/main/data/facetorch-logo-64.png' alt='' title='facetorch logo'></p>"
 
 demo=gr.Interface(
     inference,
     [gr.inputs.Image(label="Input", type="filepath")],
-    [gr.outputs.Image(type="pil", label="Output"),
+    [gr.outputs.Image(type="pil", label="Face Detection and 3D Landmarks"),
      gr.outputs.Textbox(label="Facial Expression Recognition"),
      gr.outputs.Textbox(label="DeepFake Detection"),
-     gr.outputs.Textbox(label="Cosine similarity on Face Representation Embeddings"),
-     gr.outputs.Textbox(label="Cosine similarity on Face Verification Embeddings"),
+     gr.outputs.Textbox(label="Cosine similarity of Face Representation Embeddings"),
+     gr.outputs.Textbox(label="Cosine similarity of Face Verification Embeddings"),
      gr.outputs.Textbox(label="Response")],
     title=title,
     description=description,
