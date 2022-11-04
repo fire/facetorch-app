@@ -1,8 +1,10 @@
 import json
+import operator
 import gradio as gr
 import torchvision
 from facetorch import FaceAnalyzer
 from omegaconf import OmegaConf
+from torch.nn.functional import cosine_similarity
 
 
 cfg = OmegaConf.load("config.merged.yml")
