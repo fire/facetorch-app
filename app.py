@@ -25,13 +25,18 @@ def inference(path_image):
     deepfake_dict_str = str({face.indx: face.preds["deepfake"].label for face in response.faces})
     response_str = str(response)
     
-    out_tuple = (pil_image, fer_dict_str, deepfake_dict_str, response_str)
+    base_emb = response.faces[0].preds["verify"].logits
+    sim_dict = {face.indx: cosine_similarity(base_emb, face.preds["verify"].logits, dim=0).item() for face in response.faces}
+    sim_dict_sort = dict(sorted(sim_dict.items(), key=operator.itemgetter(1),reverse=True))
+    sim_dict_sort_str = str(sim_dict_sort)
+    
+    out_tuple = (pil_image, fer_dict_str, deepfake_dict_str, sim_dict_sort_str, response_str)
     return out_tuple
 
 
 title = "facetorch"
-description = "Demo for facetorch, a Python library that can detect faces and analyze facial features using deep neural networks. The goal is to gather open sourced face analysis models from the community and optimize them for performance using TorchScrip. Try selecting one of the example images or upload your own."
-article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' target='_blank'>Github Repo</a></p>"
+description = "Demo of facetorch, a Python library that can detect faces and analyze facial features using deep neural networks. The goal is to gather open-sourced face analysis models from the community and optimize them for performance using TorchScrip. Try selecting one of the example images or upload your own."
+article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' target='_blank'>facetorch GitHub repository</a></p>"
 
 demo=gr.Interface(
     inference,
@@ -39,6 +44,7 @@ demo=gr.Interface(
     [gr.outputs.Image(type="pil", label="Output"),
      gr.outputs.Textbox(label="Facial Expression Recognition"),
      gr.outputs.Textbox(label="DeepFake Detection"),
+     gr.outputs.Textbox(label="Cosine similarity on Face Verification Embeddings"),
      gr.outputs.Textbox(label="Response")],
     title=title,
     description=description,
