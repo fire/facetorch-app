@@ -1,6 +1,6 @@
 ---
 title: facetorch-app
-emoji: 🧑‍🦲
+emoji: 🥹
 colorFrom: red
 colorTo: black
 sdk: docker
