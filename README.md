@@ -7,6 +7,15 @@ sdk: docker
 app_port: 7860
 pinned: false
 license: apache-2.0
+task_categories:
+- face-detection
+- face-representation
+- face-verification
+- facial-expression-recognition
+- deepfake-detection
+- face-alignment
+- 3D-face-alignment
+
 ---
 
 
