@@ -326,18 +326,14 @@ analyzer:
       color: green
       line_width: 3
     draw_landmarks:
-      _target_: facetorch.analyzer.utilizer.draw.LandmarkDrawer
+      _target_: facetorch.analyzer.utilizer.draw.LandmarkDrawerTorch
       transform: None
       device:
         _target_: torch.device
         type: ${analyzer.device}
       optimize_transform: false
-      marker: o
-      markersize: 0.9
-      opacity: 0.8
-      line_width: 0.8
-      color: g
-      markeredgecolor: green
+      width: 2
+      color: green
   logger:
     _target_: facetorch.logger.LoggerJsonFile
     name: facetorch
