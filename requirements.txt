@@ -1,2 +1,2 @@
-facetorch>=0.1.2
+facetorch>=0.1.3
 omegaconf==2.2.2
