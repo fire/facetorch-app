@@ -13,7 +13,7 @@ cfg = OmegaConf.load("config.merged.yml")
 analyzer = FaceAnalyzer(cfg.analyzer)
 
 def gen_sim_dict_str(response: ImageData, pred_name: str = "verify", index: int = 0)-> str:     
-    if len(response.faces) > 0
+    if len(response.faces) > 0:
         base_emb = response.faces[index].preds[pred_name].logits
         sim_dict = {face.indx: cosine_similarity(base_emb, face.preds[pred_name].logits, dim=0).item() for face in response.faces}
         sim_dict_sort = dict(sorted(sim_dict.items(), key=operator.itemgetter(1),reverse=True))
