@@ -12,11 +12,15 @@ from torch.nn.functional import cosine_similarity
 cfg = OmegaConf.load("config.merged.yml")
 analyzer = FaceAnalyzer(cfg.analyzer)
 
-def get_sim_dict_str(response: ImageData, pred_name: str = "verify", index: int = 0)-> str:
-    base_emb = response.faces[index].preds[pred_name].logits
-    sim_dict = {face.indx: cosine_similarity(base_emb, face.preds[pred_name].logits, dim=0).item() for face in response.faces}
-    sim_dict_sort = dict(sorted(sim_dict.items(), key=operator.itemgetter(1),reverse=True))
-    sim_dict_sort_str = str(sim_dict_sort)
+def gen_sim_dict_str(response: ImageData, pred_name: str = "verify", index: int = 0)-> str:     
+    if len(response.faces) > 0
+        base_emb = response.faces[index].preds[pred_name].logits
+        sim_dict = {face.indx: cosine_similarity(base_emb, face.preds[pred_name].logits, dim=0).item() for face in response.faces}
+        sim_dict_sort = dict(sorted(sim_dict.items(), key=operator.itemgetter(1),reverse=True))
+        sim_dict_sort_str = str(sim_dict_sort)
+    else:
+        sim_dict_sort_str = ""
+        
     return sim_dict_sort_str
 
 
@@ -36,8 +40,8 @@ def inference(path_image: str) -> Tuple:
     deepfake_dict_str = str({face.indx: face.preds["deepfake"].label for face in response.faces})
     response_str = str(response)
     
-    sim_dict_str_embed = get_sim_dict_str(response, pred_name="embed", index=0)
-    sim_dict_str_verify = get_sim_dict_str(response, pred_name="verify", index=0)
+    sim_dict_str_embed = gen_sim_dict_str(response, pred_name="embed", index=0)
+    sim_dict_str_verify = gen_sim_dict_str(response, pred_name="verify", index=0)
     
     out_tuple = (pil_image, fer_dict_str, deepfake_dict_str, sim_dict_str_embed, sim_dict_str_verify, response_str)
     return out_tuple
