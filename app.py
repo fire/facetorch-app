@@ -63,6 +63,6 @@ demo=gr.Interface(
     title=title,
     description=description,
     article=article,
-    examples=[["./test5.jpg"], ["./test.jpg"], ["./test4.jpg"], ["./test2.jpg"], ["./test8.jpg"], ["./test6.jpg"], ["./test3.jpg"], ["./test10.jpg"]],
+    examples=[["./test5.jpg"], ["./test.jpg"], ["./test4.jpg"], ["./test8.jpg"], ["./test6.jpg"], ["./test3.jpg"], ["./test10.jpg"]],
 )
 demo.launch(server_name="0.0.0.0", server_port=7860, debug=True)
