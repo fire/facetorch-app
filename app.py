@@ -1,3 +1,4 @@
+import os
 import json
 import operator
 import gradio as gr
@@ -42,6 +43,8 @@ def inference(path_image: str) -> Tuple:
     
     sim_dict_str_embed = gen_sim_dict_str(response, pred_name="embed", index=0)
     sim_dict_str_verify = gen_sim_dict_str(response, pred_name="verify", index=0)
+    
+    os.remove(path_image)
     
     out_tuple = (pil_image, fer_dict_str, deepfake_dict_str, sim_dict_str_embed, sim_dict_str_verify, response_str)
     return out_tuple
