@@ -1,5 +1,6 @@
 import os
 import json
+import argparse
 import operator
 import gradio as gr
 import torchvision
@@ -9,8 +10,17 @@ from facetorch.datastruct import ImageData
 from omegaconf import OmegaConf
 from torch.nn.functional import cosine_similarity
 
+parser = argparse.ArgumentParser(description="App")
+parser.add_argument(
+    "--path-conf",
+    type=str,
+    default="config.merged.yml",
+    help="Path to the config file",
+)
 
-cfg = OmegaConf.load("config.merged.yml")
+args = parser.parse_args()
+
+cfg = OmegaConf.load(args.path_conf)
 analyzer = FaceAnalyzer(cfg.analyzer)
 
 def gen_sim_dict_str(response: ImageData, pred_name: str = "verify", index: int = 0)-> str:     
