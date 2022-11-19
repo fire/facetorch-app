@@ -1,12 +1,13 @@
 FROM nvidia/cuda:11.7.0-runtime-ubuntu20.04
 
+# Set working directory
+ENV WORKDIR=/code
+WORKDIR $WORKDIR
+
 RUN useradd -ms /bin/bash admin
 RUN chown -R admin:admin $WORKDIR
 RUN chmod 755 $WORKDIR
 
-# Set working directory
-ENV WORKDIR=/code
-WORKDIR $WORKDIR
 
 # Install base utilities
 RUN apt-get update && apt-get install -y \
