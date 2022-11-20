@@ -61,18 +61,18 @@ def inference(path_image: str) -> Tuple:
 
 
 title = "facetorch-app"
-description = "Demo of facetorch, a Python library that uses pre-trained deep neural networks for face detection, representation learning, verification, expression recognition, deepfake detection, and 3D alignment. Try selecting one of the example images or upload your own. This work would not be possible without the original work of the researchers and engineers who trained the models (sources and credits can be found in the facetorch repository). Use responsibly."
+description = "Demo of facetorch, a face analysis Python library that implements open-source pre-trained neural networks for face detection, representation learning, verification, expression recognition, deepfake detection, and 3D alignment. Try selecting one of the example images or upload your own. This work would not be possible without the researchers and engineers who trained the models (sources and credits can be found in the facetorch repository)."
 article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' style='text-align:center' target='_blank'>facetorch GitHub repository</a></p>"
 
 demo=gr.Interface(
     inference,
-    [gr.inputs.Image(label="Input", type="filepath")],
-    [gr.outputs.Image(type="pil", label="Face Detection and 3D Landmarks"),
-     gr.outputs.Textbox(label="Facial Expression Recognition"),
-     gr.outputs.Textbox(label="DeepFake Detection"),
-     gr.outputs.Textbox(label="Cosine similarity of Face Representation Embeddings"),
-     gr.outputs.Textbox(label="Cosine similarity of Face Verification Embeddings"),
-     gr.outputs.Textbox(label="Response")],
+    [gr.Image(label="Input", type="filepath")],
+    [gr.Image(type="pil", label="Face Detection and 3D Landmarks"),
+     gr.Textbox(label="Facial Expression Recognition"),
+     gr.Textbox(label="DeepFake Detection"),
+     gr.Textbox(label="Cosine similarity of Face Representation Embeddings"),
+     gr.Textbox(label="Cosine similarity of Face Verification Embeddings"),
+     gr.Textbox(label="Response")],
     title=title,
     description=description,
     article=article,
