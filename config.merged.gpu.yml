@@ -167,9 +167,9 @@ analyzer:
             - 0.5
         device:
           _target_: torch.device
-          type: ${analyzer.predictor.fer.device.type}
+          type: ${analyzer.predictor.verify.device.type}
         optimize_transform: ${analyzer.optimize_transforms}
-        reverse_colors: false
+        reverse_colors: true
       postprocessor:
         _target_: facetorch.analyzer.predictor.post.PostEmbedder
         transform: None
