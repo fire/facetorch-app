@@ -1,5 +1,5 @@
 ---
-title: facetorch-app
+title: facetorch - Face Analysis
 emoji: 🥹
 colorFrom: red
 colorTo: black
@@ -30,12 +30,12 @@ task_categories:
 
 [Documentation](https://tomas-gajarsky.github.io/facetorch/facetorch/index.html), [Docker Hub](https://hub.docker.com/repository/docker/tomasgajarsky/facetorch) [(GPU)](https://hub.docker.com/repository/docker/tomasgajarsky/facetorch-gpu)
 
-Facetorch is a Python library that can detect faces and analyze facial features using deep neural networks. The goal is to gather open sourced face analysis models from the community, optimize them for performance using TorchScript and combine them to create a face analysis tool that one can:
+Facetorch is a Python library that can detect faces and analyze facial features using deep neural networks. The goal is to gather open-sourced face analysis models from the community, optimize them for performance using TorchScript and combine them to create a face analysis tool that one can:
 
 1. configure using [Hydra](https://hydra.cc/docs/intro/) (OmegaConf)
 2. reproduce with [conda-lock](https://github.com/conda-incubator/conda-lock) and [Docker](https://docs.docker.com/get-docker/)
 3. accelerate on CPU and GPU with [TorchScript](https://pytorch.org/docs/stable/jit.html)
-4. extend by uploading a model file to Google Drive and adding a config yaml file to the repository
+4. extend by uploading a model file to Google Drive and adding a config YAML file to the repository
 
 Please, use the library responsibly with caution and follow the 
 [ethics guidelines for Trustworthy AI from European Commission](https://ec.europa.eu/futurium/en/ai-alliance-consultation.1.html). 
