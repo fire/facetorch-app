@@ -60,7 +60,7 @@ def inference(path_image: str) -> Tuple:
     return out_tuple
 
 
-title = "facetorch-app"
+title = "facetorch - Face Analysis"
 description = "Demo of facetorch, a face analysis Python library that implements open-source pre-trained neural networks for face detection, representation learning, verification, expression recognition, deepfake detection, and 3D alignment. Try selecting one of the example images or upload your own. This work would not be possible without the researchers and engineers who trained the models (sources and credits can be found in the facetorch repository)."
 article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' style='text-align:center' target='_blank'>facetorch GitHub repository</a></p>"
 
