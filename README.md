@@ -1,5 +1,5 @@
 ---
-title: facetorch - Face Analysis
+title: Face Analysis (facetorch)
 emoji: 🥸
 colorFrom: red
 colorTo: black
