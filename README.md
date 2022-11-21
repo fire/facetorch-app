@@ -1,6 +1,6 @@
 ---
 title: facetorch - Face Analysis
-emoji: 🥹
+emoji: 🥸
 colorFrom: red
 colorTo: black
 sdk: docker
