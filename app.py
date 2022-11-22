@@ -78,5 +78,5 @@ demo=gr.Interface(
     article=article,
     examples=[["./test5.jpg"], ["./test.jpg"], ["./test4.jpg"], ["./test8.jpg"], ["./test6.jpg"], ["./test3.jpg"], ["./test10.jpg"]],
 )
-demo.queue(concurrency_count=3, api_open=False)
+demo.queue(concurrency_count=1, api_open=False)
 demo.launch(server_name="0.0.0.0", server_port=7860, debug=True)
