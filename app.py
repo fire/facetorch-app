@@ -48,6 +48,7 @@ def inference(path_image: str) -> Tuple:
     pil_image = torchvision.transforms.functional.to_pil_image(response.img)
     
     fer_dict_str = str({face.indx: face.preds["fer"].label for face in response.faces})
+    au_dict_str = str({face.indx: face.preds["au"].other["multi"] for face in response.faces})
     deepfake_dict_str = str({face.indx: face.preds["deepfake"].label for face in response.faces})
     response_str = str(response)
     
@@ -56,12 +57,12 @@ def inference(path_image: str) -> Tuple:
     
     os.remove(path_image)
     
-    out_tuple = (pil_image, fer_dict_str, deepfake_dict_str, sim_dict_str_embed, sim_dict_str_verify, response_str)
+    out_tuple = (pil_image, fer_dict_str, au_dict_str, deepfake_dict_str, sim_dict_str_embed, sim_dict_str_verify, response_str)
     return out_tuple
 
 
 title = "Face Analysis"
-description = "Demo of facetorch, a face analysis Python library that implements open-source pre-trained neural networks for face detection, representation learning, verification, expression recognition, deepfake detection, and 3D alignment. Try selecting one of the example images or upload your own. Feel free to duplicate this space and run it faster on a GPU instance. This work would not be possible without the researchers and engineers who trained the models (sources and credits can be found in the facetorch repository)."
+description = "Demo of facetorch, a face analysis Python library that implements open-source pre-trained neural networks for face detection, representation learning, verification, expression recognition, action unit detection, deepfake detection, and 3D alignment. Try selecting one of the example images or upload your own. Feel free to duplicate this space and run it faster on a GPU instance. This work would not be possible without the researchers and engineers who trained the models (sources and credits can be found in the facetorch repository)."
 article = "<p style='text-align: center'><a href='https://github.com/tomas-gajarsky/facetorch' style='text-align:center' target='_blank'>facetorch GitHub repository</a></p>"
 
 demo=gr.Interface(
@@ -69,6 +70,7 @@ demo=gr.Interface(
     [gr.Image(label="Input", type="filepath")],
     [gr.Image(type="pil", label="Face Detection and 3D Landmarks"),
      gr.Textbox(label="Facial Expression Recognition"),
+     gr.Textbox(label="Facial Action Unit Detection"),
      gr.Textbox(label="DeepFake Detection"),
      gr.Textbox(label="Cosine similarity of Face Representation Embeddings"),
      gr.Textbox(label="Cosine similarity of Face Verification Embeddings"),
