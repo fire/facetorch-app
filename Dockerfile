@@ -7,12 +7,12 @@ RUN useradd -m -u 1000 user
 USER user
 
 # Set home to the user's home directory
-ENV WORKDIR=/code \
-	PATH=/code/.local/bin:$PATH
+ENV HOME=/home/user \
+	PATH=/home/user/.local/bin:$PATH
 
-WORKDIR $WORKDIR
-RUN chown -R user:user $WORKDIR
-RUN chmod 777 $WORKDIR
+WORKDIR $HOME/code
+#RUN chown -R user:user $WORKDIR
+#RUN chmod 777 $WORKDIR
 
 COPY --chown=user requirements.txt $WORKDIR/requirements.txt
 
