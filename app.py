@@ -23,18 +23,6 @@ args = parser.parse_args()
 cfg = OmegaConf.load(args.path_conf)
 analyzer = FaceAnalyzer(cfg.analyzer)
 
-def gen_sim_dict_str(response: ImageData, pred_name: str = "verify", index: int = 0)-> str:     
-    if len(response.faces) > 0:
-        base_emb = response.faces[index].preds[pred_name].logits
-        sim_dict = {face.indx: cosine_similarity(base_emb, face.preds[pred_name].logits, dim=0).item() for face in response.faces}
-        sim_dict_sort = dict(sorted(sim_dict.items(), key=operator.itemgetter(1),reverse=True))
-        sim_dict_sort_str = str(sim_dict_sort)
-    else:
-        sim_dict_sort_str = ""
-        
-    return sim_dict_sort_str
-
-
 def inference(path_image: str) -> Tuple:
     response = analyzer.run(
         path_image=path_image,
@@ -47,17 +35,12 @@ def inference(path_image: str) -> Tuple:
     
     pil_image = torchvision.transforms.functional.to_pil_image(response.img)
     
-    fer_dict_str = str({face.indx: face.preds["fer"].label for face in response.faces})
     au_dict_str = str({face.indx: face.preds["au"].other["multi"] for face in response.faces})
-    deepfake_dict_str = str({face.indx: face.preds["deepfake"].label for face in response.faces})
     response_str = str(response)
-    
-    sim_dict_str_embed = gen_sim_dict_str(response, pred_name="embed", index=0)
-    sim_dict_str_verify = gen_sim_dict_str(response, pred_name="verify", index=0)
-    
+        
     os.remove(path_image)
     
-    out_tuple = (pil_image, fer_dict_str, au_dict_str, deepfake_dict_str, sim_dict_str_embed, sim_dict_str_verify, response_str)
+    out_tuple = (pil_image, au_dict_str, response_str)
     return out_tuple
 
 
@@ -69,11 +52,7 @@ demo=gr.Interface(
     inference,
     [gr.Image(label="Input", type="filepath")],
     [gr.Image(type="pil", label="Face Detection and 3D Landmarks"),
-     gr.Textbox(label="Facial Expression Recognition"),
      gr.Textbox(label="Facial Action Unit Detection"),
-     gr.Textbox(label="DeepFake Detection"),
-     gr.Textbox(label="Cosine similarity of Face Representation Embeddings"),
-     gr.Textbox(label="Cosine similarity of Face Verification Embeddings"),
      gr.Textbox(label="Response")],
     title=title,
     description=description,
@@ -81,4 +60,4 @@ demo=gr.Interface(
     examples=[["./test5.jpg"], ["./test.jpg"], ["./test4.jpg"], ["./test8.jpg"], ["./test6.jpg"], ["./test3.jpg"], ["./test10.jpg"]],
 )
 demo.queue(concurrency_count=1, api_open=False)
-demo.launch(server_name="0.0.0.0", server_port=7860, debug=True)
+demo.launch(server_name="127.0.0.1", server_port=7860, debug=True)
